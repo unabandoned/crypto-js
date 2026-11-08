@@ -25,7 +25,7 @@ const rtrim = (code) => code.replace(/[\t ]+(\r\n|\r|\n|$)/g, '$1');
 const addIndent = (code) => code.replace(/(^|\r\n|\r|\n)/g, '$1' + INDENT);
 const fixNewline = (code) => code.replace(/(\r\n|\r|\n)/g, '\n');
 const property = (name) =>
-    /^[A-Za-z_][A-Za-z0-9_]*$/.test(name) ? '.' + name : '["' + name.replace(/"/g, '\\"') + '"]';
+    /^[A-Za-z_][A-Za-z0-9_]*$/.test(name) ? '.' + name : '[' + JSON.stringify(name) + ']';
 const source = (name) => join(srcDir, name + '.js');
 
 // Resolve each module's source files and dependencies, as upstream's
