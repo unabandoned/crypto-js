@@ -1,0 +1,15 @@
+name: Renovate Config
+
+# Validate this fork's renovate.json against Renovate's schema so a
+# malformed config can't silently halt Renovate on a bot- or
+# Claude-authored PR. Delegates to the shared reusable workflow.
+on:
+  push:
+    branches: [develop]
+  pull_request:
+
+jobs:
+  renovate-config:
+    permissions:
+      contents: read
+    uses: unabandoned/.github/.github/workflows/reusable-renovate-config.yml@7df8c67cf681d8fc7ee0831d74c1e9d8640b12a9 # main
