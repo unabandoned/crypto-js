@@ -1,0 +1,16 @@
+name: Scorecard
+on:
+  branch_protection_rule:
+  schedule:
+    - cron: '0 6 * * 1'
+  push:
+    branches: [develop]
+permissions:
+  contents: read
+jobs:
+  scorecard:
+    permissions:
+      security-events: write
+      id-token: write
+      contents: read
+    uses: unabandoned/.github/.github/workflows/reusable-scorecard.yml@7df8c67cf681d8fc7ee0831d74c1e9d8640b12a9 # main

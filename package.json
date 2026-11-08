@@ -1,41 +1,51 @@
 {
-  "name": "crypto-js",
-  "title": "crypto-js",
-  "description": "JavaScript library of crypto standards.",
+  "name": "@unabandoned/crypto-js",
   "version": "4.2.0",
-  "homepage": "http://github.com/brix/crypto-js",
+  "description": "JavaScript library of crypto standards.",
+  "homepage": "https://github.com/unabandoned/crypto-js#readme",
   "author": {
     "name": "Evan Vosberg",
     "url": "http://github.com/evanvosberg"
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/brix/crypto-js.git"
+    "url": "git+https://github.com/unabandoned/crypto-js.git"
   },
   "bugs": {
-    "url": "http://github.com/brix/crypto-js/issues"
+    "url": "https://github.com/unabandoned/crypto-js/issues"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "grunt build",
-    "test": "grunt default"
+  "engines": {
+    "node": ">=22.12"
   },
   "main": "index.js",
   "browser": {
     "crypto": false
   },
+  "files": [
+    "/*.js",
+    "docs/",
+    "CONTRIBUTING.md"
+  ],
+  "scripts": {
+    "prepare": "git config core.hooksPath .githooks || true",
+    "build": "node scripts/build.mjs",
+    "clean": "node -e \"for (const n of Object.keys(require('./scripts/modules.cjs'))) require('fs').rmSync(n + '.js', { force: true })\"",
+    "test": "npm run build && node --test test/build.test.mjs test/upstream.test.cjs"
+  },
   "dependencies": {},
   "devDependencies": {
-    "fmd": "~0.0.3",
-    "grunt": "^1.4.3",
-    "grunt-cli": "^1.4.3",
-    "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-jshint": "^3.0.0",
-    "grunt-jsonlint": "^2.1.3",
-    "grunt-update-json": "^0.2.2",
-    "load-grunt-config": "^4.0.0",
-    "lodash": "^4.17.21"
+    "@commitlint/cli": "21.2.4",
+    "@commitlint/config-conventional": "21.2.4"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   },
   "keywords": [
     "security",

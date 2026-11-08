@@ -1,0 +1,20 @@
+name: publish
+on:
+  release:
+    types: [published]
+permissions:
+  contents: read
+  id-token: write   # required for OIDC on the calling job
+jobs:
+  publish:
+    permissions:
+      contents: read
+      id-token: write
+    uses: unabandoned/.github/.github/workflows/reusable-publish.yml@7df8c67cf681d8fc7ee0831d74c1e9d8640b12a9 # main
+    with:
+      # The published modules (aes.js, enc-hex.js, ...) are generated from
+      # src/ by scripts/build.mjs and not committed, so the publish job has to
+      # build before it packs. The build has no dependencies; the install only
+      # brings commitlint.
+      build-for-publish: true
+    secrets: inherit

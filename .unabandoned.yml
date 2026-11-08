@@ -1,0 +1,32 @@
+schema: 1
+
+package: "@unabandoned/crypto-js"
+
+upstream:
+  repo: brix/crypto-js
+  reason: "development discontinued: 4.2.0 (2023-10-24) was the last release, and npm marks it deprecated (\"Active development of CryptoJS has been discontinued\")"
+
+summary: >-
+  CryptoJS: hashes (MD5, SHA-1, SHA-2, SHA-3, RIPEMD-160), HMAC, PBKDF2 and
+  EvpKDF, and ciphers (AES, TripleDES, RC4, Rabbit, Blowfish) with their
+  modes, paddings and encoders, as one bundle or per-algorithm modules
+  (crypto-js/aes, crypto-js/enc-hex, ...).
+
+why-forked: >-
+  CyberChef's RC4, RC4 Drop and Derive EVP Key operations and its cipher
+  helpers (src/core/lib/Ciphers.mjs) are built on it. Upstream is
+  discontinued and deprecated on npm, so every install of CyberChef carries a
+  deprecation warning for a package nobody owns. It has no runtime
+  dependencies, so the fork changes no code: it reproduces the 4.2.0 modules
+  byte for byte from src/ with a dependency-free build, and gives the package
+  an owner that can take a fix if one is ever needed.
+
+used-by:
+  - consumer: "TheTechNetwork/CyberChef"
+    purpose: >-
+      RC4, RC4 Drop and Derive EVP Key operations and the shared cipher
+      helpers in src/core/lib/Ciphers.mjs (aliased as crypto-js)
+
+status: active
+
+tags: [crypto, aes, sha, hmac, pbkdf2, cipher, browser]

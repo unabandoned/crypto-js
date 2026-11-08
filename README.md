@@ -2,6 +2,21 @@
 
 JavaScript library of crypto standards.
 
+> **This is the `unabandoned` fork.** Upstream `crypto-js` stopped at 4.2.0 (October 2023) and
+> is deprecated on npm. This fork continues it as
+> [`@unabandoned/crypto-js`](https://www.npmjs.com/package/@unabandoned/crypto-js) so it has an
+> owner. The library code is unchanged: the published modules are rebuilt from `src/` byte for
+> byte identical to crypto-js 4.2.0, with the same file names, so every `crypto-js/<module>`
+> import keeps working. To switch without touching your imports, alias it:
+>
+> ```bash
+> npm install crypto-js@npm:@unabandoned/crypto-js
+> ```
+>
+> Report problems with the fork [here](https://github.com/unabandoned/crypto-js/issues), not
+> upstream. Upstream's advice below still stands: for new code, prefer the native Web Crypto /
+> Node `crypto` APIs.
+
 ## Discontinued
 
 Active development of CryptoJS has been discontinued. This library is no longer maintained.
