@@ -10,7 +10,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    uses: unabandoned/.github/.github/workflows/reusable-publish.yml@23139a663b090be91f54115baa805f4588255aa5 # main
+    uses: unabandoned/.github/.github/workflows/reusable-publish.yml@2212a52dde1417252c73f3a53c864e1aae27ac84 # main
     with:
       # The published modules (aes.js, enc-hex.js, ...) are generated from
       # src/ by scripts/build.mjs and not committed, so the publish job has to
